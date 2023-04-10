@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class TodoCard extends StatelessWidget {
-  const TodoCard({super.key});
+  final String taskTitle;
+  final bool taskStatus;
+  const TodoCard({super.key, required this.taskTitle, required this.taskStatus});
 
   @override
   Widget build(BuildContext context) {
@@ -16,18 +18,18 @@ class TodoCard extends StatelessWidget {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
+          children: [
             Text(
-              "task",
-              style: TextStyle(
+              taskTitle,
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 22,
               ),
             ),
             Icon(
-              Icons.close,
+              (taskStatus) ? Icons.check : Icons.close,
               size: 27,
-              color: Colors.red,
+              color: (taskStatus) ? Colors.green : Colors.red,
             ),
           ],
         ),
