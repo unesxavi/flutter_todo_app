@@ -76,13 +76,19 @@ class _TodoAppState extends State<TodoApp> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            showModalBottomSheet(
-                context: context,
-                builder: (BuildContext context) {
-                  return Container(
-                    height: double.infinity,
+            // showModalBottomSheet(
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return Dialog(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Container(
+                    // height: double.infinity,
+                    height: 250,
                     padding: const EdgeInsets.all(22),
-                    color: Colors.amber[100],
+                    // color: Colors.amber[100],
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -107,7 +113,7 @@ class _TodoAppState extends State<TodoApp> {
                             Navigator.pop(context);
                           },
                           child: const Text(
-                            'Add new task',
+                            'Add task',
                             style: TextStyle(
                               fontSize: 22,
                             ),
@@ -115,9 +121,11 @@ class _TodoAppState extends State<TodoApp> {
                         )
                       ],
                     ),
-                  );
-                },
-                isScrollControlled: true);
+                  ),
+                );
+              },
+              // isScrollControlled: true,
+            );
           },
           backgroundColor: Colors.redAccent,
           child: const Icon(
